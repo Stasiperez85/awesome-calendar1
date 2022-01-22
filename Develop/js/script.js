@@ -45,6 +45,10 @@ $(document).ready(function () {
     })
 
     // get local storage - or retrive text
+    var hour8 = localStorage.getItem("8");
+    console.log(hour8)
+    $("#8 .description").val(hour8)
+
     var hour9 = localStorage.getItem("9");
     console.log(hour9)
     $("#9 .description").val(hour9)
