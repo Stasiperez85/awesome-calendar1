@@ -3,6 +3,7 @@ var rightNow = moment().format("MMMM Do, YYYY");
 $("#currentDay").append(rightNow);
 console.log(rightNow);
 
+// setting array for color-coding hours
 var arrTime = [8, 9, 10, 11, 12, 13, 14, 15, 16];
 
 $(document).ready(function () {
@@ -11,13 +12,19 @@ $(document).ready(function () {
     var currentHour = parseInt(moment().format("H"));
     console.log(typeof currentHour);
 
-    // var currentHour = new Date();
     console.log(currentHour);
 
     // color-code time blocks to indicate past, present, or future
     for (var i = 0; i < arrTime.length; i++) {
+
+        if (currentHour > arrTime[0]) {
+            $(".description").removeClass("present");
+            $(".description").removeClass("future");
+            $(".description").addClass("past");
+        }
+
         if (currentHour < arrTime[0]) {
-            $(".description").addClass("present");
+            $(".descr1pt1on").addClass("present");
             $(".description").removeClass("future");
             $(".description").removeClass("past");
         }
@@ -27,11 +34,7 @@ $(document).ready(function () {
             $(".description").removeClass("past");
         }
 
-        if (currentHour > arrTime[0]) {
-            $(".description").removeClass("present");
-            $(".description").removeClass("future");
-            $(".description").addClass("past");
-        }
+
     };
 
     // activate save button for that time block
